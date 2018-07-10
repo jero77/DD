@@ -50,12 +50,15 @@ game(34,in,kl). game(34,hdh,ft). game(34,da,au).
 
 % game can be won/lost/drawn, consider home team & deduct for other team
 % D = Day, H = Home, O = other
-1{win(D, H), loose(D, H), draw(D, H)}1 :- game(D, H, _).
-loose(D, O) :- win(D, H), game(D, H, O).
-win(D, O) :- loose(D, H), game(D, H, O).
-draw(D, O) :- draw(D, H), game(D, H, O).
+1{win(D, H), loose(D, H), draw(D, H)}1:- team(H),round(D),team(O),game(D, H, O).
+loose(D, O) :-  team(H), team(O), round(D), win(D, H), game(D, H, O).
+win(D, O) :- team(H), team(O), round(D), loose(D, H), game(D, H, O).
+draw(D, O) :- team(H), team(O), round(D), draw(D, H), game(D, H, O).
 
 % win -> +3pts, loose -> +0 pts, draw -> +1pts
-points(R, T, P) :- points(R-1, T, X), win(R, T), P is X + 3.
-points(R, T, P) :- points(R-1, T, X), loose(R, T), P is X.
-points(R, T, P) :- points(R-1, T, X), draw(R, T), P is X + 1.
+points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1
+    points(L, T, X), win(R, T), P = X + 3.
+points(R, T, P) :- round(R), round(L), p(P), team(T), R = L + 1
+    points(L, T, P), loose(R, T).
+points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1
+    points(L, T, X), draw(R, T), P = X + 1.
