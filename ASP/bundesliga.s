@@ -56,9 +56,9 @@ win(D, O) :- team(H), team(O), round(D), loose(D, H), game(D, H, O).
 draw(D, O) :- team(H), team(O), round(D), draw(D, H), game(D, H, O).
 
 % win -> +3pts, loose -> +0 pts, draw -> +1pts
-points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1
+points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
     points(L, T, X), win(R, T), P = X + 3.
-points(R, T, P) :- round(R), round(L), p(P), team(T), R = L + 1
+points(R, T, P) :- round(R), round(L), p(P), team(T), R = L + 1,
     points(L, T, P), loose(R, T).
-points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1
+points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
     points(L, T, X), draw(R, T), P = X + 1.
