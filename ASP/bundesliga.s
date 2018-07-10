@@ -62,3 +62,8 @@ points(R, T, P) :- round(R), round(L), p(P), team(T), R = L + 1,
     points(L, T, P), loose(R, T).
 points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
     points(L, T, X), draw(R, T), P = X + 1.
+
+% deny solutions where after 34 rounds 4th to 18thhave not all 44 Pts
+% F = 1st Place, S = 2nd Place, T = 3rd Place,
+:- team(F), team(S), team(T), points(34, F, FP), points(34, S, SP), FP >= SP,
+    points(34, T, TP), SP >= TP, team(X), points(34, X, XP), XP != 44.
