@@ -56,12 +56,12 @@ win(D, O) :- team(H), team(O), round(D), loose(D, H), game(D, H, O).
 draw(D, O) :- team(H), team(O), round(D), draw(D, H), game(D, H, O).
 
 % win -> +3pts, loose -> +0 pts, draw -> +1pts
-points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
-    points(L, T, X), win(R, T), P = X + 3.
-points(R, T, P) :- round(R), round(L), p(P), team(T), R = L + 1,
-    points(L, T, P), loose(R, T).
-points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
-    points(L, T, X), draw(R, T), P = X + 1.
+points(D, T, P) :- round(D), round(L), p(P), p(X), team(T), D = L + 1,
+    points(L, T, X), win(D, T), P = X + 3.
+points(D, T, P) :- round(D), round(L), p(P), team(T), D = L + 1,
+    points(L, T, P), loose(D, T).
+points(D, T, P) :- round(D), round(L), p(P), p(X), team(T), D = L + 1,
+    points(L, T, X), draw(D, T), P = X + 1.
 
 % deny solutions where after 34 rounds 4th to 18thhave not all 44 Pts
 % F = 1st Place, S = 2nd Place, T = 3rd Place,
@@ -69,5 +69,5 @@ points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
 %    points(34, F, FP), points(34, S, SP), points(34, T, TP), FP >= SP, SP >= TP,
 %    team(X), X != F, X != S, X != T, p(XP), points(34, X, XP), XP != 44, TP >= XP.
 
-:- p(D), p(N), p(KI), points(34,d,D), points(34,n,N), points(34,ki,KI), team(X),
-    X != d, X != n, X != ki, p(XP), points(34, X, XP), XP != 44.
+:- p(PD), p(PN), p(PKI), points(34,d,PD), points(34,n,PN), points(34,ki,PKI),
+    team(X), X != d, X != n, X != ki, p(XP), points(34, X, XP), XP != 44.
