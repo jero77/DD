@@ -69,5 +69,7 @@ points(D, T, P) :- round(D), round(L), p(P), p(X), team(T), D = L + 1,
 %    points(34, F, FP), points(34, S, SP), points(34, T, TP), FP >= SP, SP >= TP,
 %    team(X), X != F, X != S, X != T, p(XP), points(34, X, XP), XP != 44, TP >= XP.
 
-:- p(PD), p(PN), p(PKI), points(34,d,PD), points(34,n,PN), points(34,ki,PKI),
-    team(X), X != d, X != n, X != ki, p(XP), points(34, X, XP), XP != 44.
+%:- p(PD), p(PN), p(PKI), points(34,d,PD), points(34,n,PN), points(34,ki,PKI),
+%   team(X), X != d, X != n, X != ki, p(XP), points(34, X, XP), XP != 44.
+
+:- team(X), X != d, X != n, X != ki, p(XP), points(34, X, XP), XP != 44.
