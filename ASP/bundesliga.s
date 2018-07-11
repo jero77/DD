@@ -65,6 +65,6 @@ points(R, T, P) :- round(R), round(L), p(P), p(X), team(T), R = L + 1,
 
 % deny solutions where after 34 rounds 4th to 18thhave not all 44 Pts
 % F = 1st Place, S = 2nd Place, T = 3rd Place,
-:- team(F),team(S),team(T),p(FP),p(SP),p(TP),
+:- team(F),team(S),team(T),p(FP),p(SP),p(TP), F != S, S != T, F != T,
     points(34, F, FP), points(34, S, SP), points(34, T, TP), FP >= SP, SP >= TP,
-    team(X), p(XP), points(34, X, XP), XP != 44, TP >= XP.
+    team(X), X != F, X != S, X != T, p(XP), points(34, X, XP), XP != 44, TP >= XP.
