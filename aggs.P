@@ -9,5 +9,5 @@ neighborOf(X, C) :- borders(C, X, _).
 neighborOf(X, C) :- borders(X, C, _).
 
 listNeighbors(C, B) :- bagof(X, C^neighborOf(X, C), B).
-countNeighbors(N, X) :- country(N,_Code,_,_,_,_), listNeighbors(_C,_L),
+countNeighbors(N, X) :- country(N,_C,_,_,_,_), listNeighbors(_C,_L),
                           count(X, _L).
