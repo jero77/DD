@@ -1,0 +1,11 @@
+% Aggregates
+count(0, []).
+count(1, [X]).
+count(I, [null, T]) :- count(I, T).
+count(I, [H|T]) :- count(X, T), I is X + 1.
+
+%Countryname and Neighbors
+neighborOf(X, C) :- borders(C, X, _).
+neighborOf(X, C) :- borders(X, C, _).
+
+countryNeighbors(C, L) :- bagof(X, C^neighborOf(X,C), L).
