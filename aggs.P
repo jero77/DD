@@ -19,4 +19,5 @@ countNeighbors(N, X) :- country(N,_C,_,_,_,_), listNeighbors(_C,_L),
                           count(X, _L).
 
 % Countryname of the country with the highest amount of Neighbors
-maxNeighbors
+maxNeighbors(N, X) :- country(N,_,_,_,_,_), countNeighbors(N,X),
+            bagof(I, C^countNeighbors(C, I), _L), max(X, L).
