@@ -3,7 +3,6 @@
 % Aggregates
 count(0, []).
 count(1, [X]).
-count(I, [null, T]) :- count(I, T).
 count(I, [H|T]) :- count(X, T), I is X + 1.
 
 %Countryname and Neighbors
