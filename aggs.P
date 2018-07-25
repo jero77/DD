@@ -2,7 +2,6 @@
 
 % Aggregates
 count(0, []).
-count(1, [X]).
 count(I, [H|T]) :- count(X, T), I is X + 1.
 
 %Countryname and Neighbors
@@ -10,5 +9,5 @@ neighborOf(X, C) :- borders(C, X, _).
 neighborOf(X, C) :- borders(X, C, _).
 
 listNeighbors(C, B) :- bagof(X,C^neighborOf(X, C), B).
-countNeighbors(N, C) :- country(_Code, N,_,_,_,_), listNeighbors(_Code,_L),
+countNeighbors(N, C) :- country(N,_Code,_,_,_,_), listNeighbors(_Code,_L),
                           count(_L, C).
