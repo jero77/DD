@@ -1,3 +1,5 @@
+:- include(mondial).
+
 % Aggregates
 count(0, []).
 count(1, [X]).
