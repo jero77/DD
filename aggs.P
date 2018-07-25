@@ -8,4 +8,4 @@ count(I, [H|T]) :- count(X, T), I is X + 1.
 neighborOf(X, C) :- borders(C, X, _).
 neighborOf(X, C) :- borders(X, C, _).
 
-countryNeighbors(C, L) :- bagof(X, C^neighborOf(X,C), L).
+countryNeighbors(C, B) :- bagof(X,C^neighborOf(X, C), B).
