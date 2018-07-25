@@ -4,10 +4,19 @@
 count(0, []).
 count(I, [H|T]) :- count(X, T), I is X + 1.
 
-%Countryname and Neighbors
+max(null, []).
+max(M, [null|T]) :- max(M, T).
+max(H, [H|T]) :- max(null, T), H  \= null.
+max(H, [H|T]) :- max(X, T), H \= null, X \= null, H > X.
+max(M, [H|T]) :- max(M, T), H \= null, X \= null, H <= X.
+
+% Countryname and Neighbors
 neighborOf(X, C) :- borders(C, X, _).
 neighborOf(X, C) :- borders(X, C, _).
 
 listNeighbors(C, B) :- bagof(X, C^neighborOf(X, C), B).
 countNeighbors(N, X) :- country(N,_C,_,_,_,_), listNeighbors(_C,_L),
                           count(X, _L).
+
+% Countryname of the country with the highest amount of Neighbors
+maxNeighbors
