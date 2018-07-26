@@ -33,3 +33,8 @@ maxNeighbors(N, X) :- bagof(I, C^countNeighbors(C, I), _L), countNeighbors(N,X),
 
 % Avg. area of all continents
 avgArea(X) :- bagof(A, N^continent(N,A), _L), avg(X, _L).
+
+% Avg. Latitude and Longitude of all cities
+avgLatLon(X, Y) :- bagof(I, N^C^Cap^A^P^L^city(N,C,Cap,A,P,I,L), _Lat),
+      bagof(I, N^C^Cap^A^P^L^city(N,C,Cap,A,P,L,I), _Lon),
+      avg(X, _Lat), avg(Y, _Lon).
