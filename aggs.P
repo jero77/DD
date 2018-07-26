@@ -10,6 +10,14 @@ max(H, [H|T]) :- max(M, T), H \= null, M \= null, H > M.
 max(M, [H|T]) :- max(M, T), H \= null, M \= null, not(H > M).
 max(M, [null|T]) :- max(M, T).
 
+sum(null, []).
+sum(S, [H|T]) :- sum(X, T), H \= null, X \= null, S is H + X.
+sum(S, [null|T]) :- sum(S, T).
+sum(H, [H|T]) :- sum(null, T), H \= null.
+
+avg(null, []).
+avg(A, L) :- sum(S, L), count(C, L), A is S / C.
+
 % Countryname and Neighbors
 neighborOf(X, C) :- borders(C, X, _).
 neighborOf(X, C) :- borders(X, C, _).
