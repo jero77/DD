@@ -30,3 +30,6 @@ countNeighbors(N, X) :- country(N,_C,_,_,_,_), listNeighbors(_C,_L),
 % Countryname of the country with the highest amount of Neighbors
 maxNeighbors(N, X) :- bagof(I, C^countNeighbors(C, I), _L), countNeighbors(N,X),
                           max(X, _L).
+
+% Avg. area of all continents
+avgArea(X) :- bagof(A, N^continent(N,A), _L), avg(X, _L).
