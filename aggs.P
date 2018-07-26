@@ -36,5 +36,5 @@ avgArea(X) :- bagof(A, N^continent(N,A), _L), avg(X, _L).
 
 % Avg. Latitude and Longitude of all cities
 avgLatLon(X, Y) :- bagof(I, N^C^Cap^A^P^L^city(N,C,Cap,A,P,I,L), _Lat),
-      bagof(I, N^C^Cap^A^P^L^city(N,C,Cap,A,P,L,I), _Lon),
+      bagof(I2, N2^C2^Cap2^A2^P2^L2^city(N2,C2,Cap2,A2,P2,L2,I2), _Lon),
       avg(X, _Lat), avg(Y, _Lon).
