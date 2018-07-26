@@ -6,5 +6,7 @@ swissLang(L) :- language('CH',L,_).
 a(C) :- country(_,C,_,_,_,_), swissLang(L), language(C,L,_).
 
 % b) Codes of countries where only not swiss languages are spoken
-noSwiss(C) :- country(_,C,_,_,_,_), language(C,L,_), not swissLang(L).
 b(C) :- country(_,C,_,_,_,_), not a(C).
+
+% c) Codes of countries where only swiss languages are spoken
+c(C) :- country(_,C,_,_,_,_), not b(C).
