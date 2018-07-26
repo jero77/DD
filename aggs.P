@@ -2,7 +2,8 @@
 
 % Aggregates
 count(0, []).
-count(I, [H|T]) :- count(X, T), I is X + 1.
+count(I, [H|T]) :- count(X, T), I is X + 1, H \= null.
+count(I, [null|T]) :- count(I, T).
 
 max(null, []).
 max(H, [H|T]) :- max(null, T), H  \= null.
