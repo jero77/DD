@@ -1,0 +1,16 @@
+done(8)
+pos(1,left,farmer)  pos(1,left,dog) pos(1,left,goat) pos(1,left,cabbage)
+  carry(1,goat)
+pos(2,right,goat) pos(2,right,farmer) pos(2,left,cabbage) pos(2,left,dog)
+
+pos(3,left,farmer) pos(3,right,goat) pos(3,left,cabbage) pos(3,left,dog) 
+  carry(3,cabbage)
+pos(4,right,cabbage) pos(4,right,farmer) pos(4,right,goat) pos(4,left,dog)
+  carry(4,goat)
+pos(5,left,farmer) pos(5,right,cabbage) pos(5,left,dog) pos(5,left,goat)
+  carry(5,dog)
+pos(6,right,cabbage) pos(6,right,dog) pos(6,right,farmer) pos(6,left,goat)
+
+pos(7,left,farmer) pos(7,right,cabbage) pos(7,right,dog)  pos(7,left,goat)
+  carry(7,goat)
+pos(8,right,cabbage) pos(8,right,dog) pos(8,right,goat) pos(8,right,farmer)
