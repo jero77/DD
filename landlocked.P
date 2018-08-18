@@ -7,7 +7,7 @@ borders(Y,X,L) :- borders(X,Y,L).
 coast(C) :- geo_sea(_,C,_).
 
 % Name of all countries that have no coast = landlocked country (ll)
-a(N) :- country(N,_C,_,_,_,_), not coast(C).
+a(N) :- country(N,_C,_,_,_,_), not coast(_C).
 % Name of all countries that are landlocked and have only landlocked neighbors
 neighbor(C1, C2) :- borders(C1,C2,_), coast(C2).
-b(N) :- country(N,_C,_,_,_,_), not coast(C), not neighbor(_C,_).
+b(N) :- country(N,_C,_,_,_,_), not coast(_C), not neighbor(_C,_).
