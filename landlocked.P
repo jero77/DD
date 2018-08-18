@@ -1,2 +1,3 @@
+:- include(mondial).
 % Name of all countries that have no coast = landlocked country (ll)
 ll(N) :- country(N,_C,_,_,_,_), not geo_sea(_,_C,_).
