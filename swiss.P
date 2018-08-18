@@ -2,15 +2,16 @@
 
 swissLang(L) :- language('CH',L,_).
 
-% a) Codes of countries where a swiss language is spoken
+% a) Codes of countries where A SWISS language is spoken
 a(C) :- country(_,C,_,_,_,_), swissLang(L), language(C,L,_).
 
-% b) Codes of countries where only none-swiss languages are spoken
+% b) Codes of countries where ONLY NONE-SWISS languages are spoken
 b(C) :- country(_,C,_,_,_,_), not a(C).
 
-% c) Codes of countries where only swiss languages are spoken
-noSwLngCtry(C) :- country(_,C,_,_,_,_), language(C,_L,_), not swissLang(_L). 
+% c) Codes of countries where ONLY SWISS languages are spoken
+noSwLngCtry(C) :- country(_,C,_,_,_,_), language(C,_L,_), not swissLang(_L).
 c(C) :- a(C), not noSwLngCtry(C).
 
-% d) Codes of countries where all swiss languages are spoken
-d(C).
+% d) Codes of countries where ALL SWISS languages are spoken
+missingSwLng(C, L) :- country(_,C,_,_,_,_), swissLang(L), not language(C,L,_).
+d(C) :- country(_,C,_,_,_,_), language(C, L, _), not missingSwLng(C, L).
