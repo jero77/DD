@@ -3,4 +3,4 @@
 a(N) :- country(N,_C,_,_,_,_), not geo_sea(_,_C,_).
 % Name of all countries that are landlocked and have only landlocked neighbors
 neighbor(C1, C2) :- borders(C1,C2,_), geo_sea(_,C2,_).
-b(N) :- country(N,_C,_,_,_,_), not geo_sea(_,_C,_), not neighbor(C,_).
+b(N) :- country(N,_C,_,_,_,_), not geo_sea(_,_C,_), not neighbor(_C,_).
